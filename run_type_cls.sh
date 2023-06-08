@@ -1,0 +1,28 @@
+export CUDA_VISIBLE_DEVICES=7
+python3 run.py \
+    --task_name type_cls \
+    --report_to none \
+    --max_seq_length 512 \
+    --per_device_train_batch_size 12 \
+    --per_device_eval_batch_size 12 \
+    --learning_rate 5e-5 \
+    --num_train_epochs 10 \
+    --logging_dir ./tb_logs \
+    --logging_steps 50 \
+    --eval_steps 500 \
+    --save_steps 5000 \
+    --evaluation_strategy steps \
+    --warmup_ratio 0.1 \
+    --model_dir /home/jli/UniRel-main/bert-base-chinese\
+    --output_dir ./output \
+    --overwrite_output_dir \
+    --dataset_dir YourDataDirectory \
+    --dataloader_pin_memory \
+    --dataloader_num_workers 4 \
+    --lr_scheduler_type cosine \
+    --seed 2023 \
+    --do_test_all_checkpoints\
+    --dataset_name nyt_star \
+    --test_data_type type_cls \
+    --threshold 0.5 \
+    --do_train
